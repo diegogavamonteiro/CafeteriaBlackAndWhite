@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+import br.edu.ifes.cafeteria.cdp.*;
+import br.edu.ifes.cafeteria.util.FabricaCafeNormal;
+import java.util.ArrayList;
+import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,9 +19,12 @@ import static org.junit.Assert.*;
  *
  * @author DIEGOGM
  */
-public class Teste {
+public class FabricaCafeNormalTest {
     
-    public Teste() {
+    public FabricaCafeNormal FabricaCN;
+    public  ArrayList<Ingrediente> ingredientes;
+    
+    public FabricaCafeNormalTest() {
     }
     
     @BeforeClass
@@ -30,10 +37,27 @@ public class Teste {
     
     @Before
     public void setUp() {
+        FabricaCN = new FabricaCafeNormal();
+        ingredientes = new ArrayList<Ingrediente>();
+
     }
     
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void criarIngredientesTest(){
+        ingredientes.add(new CafeSoluvel(50));
+        ingredientes.add(new Açucar(2));
+        ingredientes.add(new Leite(100));
+        Assert.assertNotNull( FabricaCN.criarIngredientes());
+    }
+    
+       @Test
+    public void criarCafeTest(){
+
+        Assert.assertNotNull( FabricaCN.criarCafe());
     }
     
     // TODO add test methods here.
